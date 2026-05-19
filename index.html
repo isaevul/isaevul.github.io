@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Свадьба Юрий & Изабелла</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,8 +20,14 @@
             line-height: 1.8;
         }
 
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        h2, h3 {
+            font-family: 'Playfair Display', serif;
             font-weight: 400;
             color: #3a3a3a;
         }
@@ -75,22 +81,23 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            gap: 80px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 300;
+            font-size: 6rem;
+            font-weight: 400;
             color: white;
-            letter-spacing: 3px;
-            line-height: 1.1;
+            letter-spacing: 8px;
+            line-height: 1.8;
             position: relative;
             z-index: 2;
-            padding: 0 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
 
         .hero-photo {
-            width: 130px;
-            height: 130px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid rgba(255,255,255,0.8);
@@ -101,14 +108,14 @@
         }
 
         .hero-photo-left {
-            left: -70px;
+            left: -90px;
             top: 50%;
             transform: translateY(-50%) translateX(-30px);
             opacity: 0;
         }
 
         .hero-photo-right {
-            right: -70px;
+            right: -90px;
             top: 50%;
             transform: translateY(-50%) translateX(30px);
             opacity: 0;
@@ -144,19 +151,21 @@
         }
 
         .hero-welcome-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            letter-spacing: 6px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            letter-spacing: 8px;
             color: white;
-            margin-bottom: 0.3rem;
-            font-weight: 400;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
         }
 
         .hero-welcome-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
             font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .arrow-down {
@@ -190,7 +199,7 @@
         }
 
         .timer-number {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             font-weight: 600;
             color: #b49b7f;
@@ -205,9 +214,12 @@
         }
 
         .section-title {
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
             color: #b49b7f;
+            letter-spacing: 4px;
+            font-style: italic;
         }
 
         .subtitle {
@@ -224,11 +236,12 @@
         }
 
         .calendar-header {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.4rem;
-            letter-spacing: 6px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            letter-spacing: 8px;
             color: #b49b7f;
             margin-bottom: 20px;
+            font-style: italic;
         }
 
         .calendar-grid {
@@ -239,9 +252,10 @@
         }
 
         .calendar-day-name {
-            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #999;
             padding-bottom: 8px;
             font-weight: 400;
@@ -317,8 +331,10 @@
         }
 
         .timeline .event {
-            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
             color: #333;
+            font-style: italic;
         }
 
         .timeline-icon {
@@ -351,9 +367,11 @@
         }
 
         .detail-card h3 {
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             margin-bottom: 0.8rem;
             color: #b49b7f;
+            font-style: italic;
         }
 
         .rsvp-button {
@@ -428,28 +446,40 @@
         }
 
         @media (max-width: 600px) {
+            .hero-main {
+                gap: 60px;
+            }
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
+                letter-spacing: 6px;
+                line-height: 2;
             }
             .hero-photo {
-                width: 90px;
-                height: 90px;
+                width: 270px;
+                height: 270px;
             }
             .hero-photo-left {
-                left: -40px;
+                left: -140px;
             }
             .hero-photo-right {
-                right: -40px;
+                right: -140px;
+            }
+            .hero-welcome-title {
+                font-size: 1.5rem;
+                letter-spacing: 5px;
             }
             .section {
                 padding: 50px 20px;
+            }
+            .section-title {
+                font-size: 2.2rem;
             }
             .timer-number {
                 font-size: 2.5rem;
             }
             .calendar-header {
-                font-size: 1.8rem;
-                letter-spacing: 4px;
+                font-size: 2rem;
+                letter-spacing: 5px;
             }
             .calendar-grid {
                 gap: 4px;
@@ -465,7 +495,6 @@
 
     <header class="hero">
         <div class="hero-content">
-            <!-- Верхняя часть: фото + имена -->
             <div class="hero-top">
                 <div class="hero-main">
                     <img src="https://allwebs.ru/images/2026/05/19/920d2fff5819ef96a8d3ada53ad0eb64.jpg" alt="Фото 1" class="hero-photo hero-photo-left">
@@ -473,7 +502,6 @@
                     <img src="https://allwebs.ru/images/2026/05/19/920d2fff5819ef96a8d3ada53ad0eb64.jpg" alt="Фото 2" class="hero-photo hero-photo-right">
                 </div>
             </div>
-            <!-- Нижняя часть: приветствие + стрелка -->
             <div class="hero-bottom">
                 <div class="hero-welcome">
                     <h2 class="hero-welcome-title">ДОРОГИЕ ГОСТИ!</h2>
@@ -485,7 +513,6 @@
     </header>
 
     <main>
-        <!-- Календарь -->
         <section class="section" style="padding-top: 0;">
             <div class="calendar-wrapper">
                 <div class="calendar-header">СЕНТЯБРЬ</div>
@@ -501,7 +528,6 @@
             </div>
         </section>
 
-        <!-- Программа дня -->
         <section class="section">
             <h2 class="section-title">Программа дня</h2>
             <ul class="timeline">
@@ -523,7 +549,6 @@
         <span class="time">15:00</span>
         <p class="event">Сбор гостей</p>
     </li>
-
     <li class="reveal">
         <span class="timeline-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -536,7 +561,6 @@
         <span class="time">16:00</span>
         <p class="event">Выездная регистрация</p>
     </li>
-
     <li class="reveal">
         <span class="timeline-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -551,7 +575,6 @@
         <span class="time">17:00</span>
         <p class="event">Фотосессия</p>
     </li>
-
     <li class="reveal">
         <span class="timeline-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -595,7 +618,6 @@
             </div>
         </section>
 
-        <!-- Подтверждение -->
         <section class="section" style="background: #f4f1ed;">
             <h2 class="section-title">Вы будете?</h2>
             <p>Пожалуйста, подтвердите ваше присутствие до <strong>15 августа 2026</strong></p>
@@ -610,7 +632,6 @@
 
     <script>
         const weddingDate = new Date('2026-09-13T18:00:00').getTime();
-
         function updateTimer() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
@@ -634,14 +655,12 @@
         }
         setInterval(updateTimer, 1000);
         updateTimer();
-
         const storySection = document.querySelector('.section');
         if (storySection) {
             const timerDiv = document.createElement('div');
             timerDiv.className = 'timer-container';
             storySection.appendChild(timerDiv);
         }
-
         function buildCalendar() {
             const grid = document.getElementById('calendarGrid');
             const firstDayOfWeek = 1;
@@ -668,9 +687,7 @@
                 grid.appendChild(dayDiv);
             }
         }
-
         const revealElements = document.querySelectorAll('.reveal, .hero-photo-left, .hero-photo-right, .hero-welcome, .arrow-down');
-
         function checkReveal() {
             const windowHeight = window.innerHeight;
             revealElements.forEach(el => {
