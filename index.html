@@ -51,11 +51,97 @@
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
 
+.hero-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.hero-welcome {
+    margin-bottom: 1.5rem;
+}
+
+.hero-welcome-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    letter-spacing: 6px;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.hero-welcome-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+}
+
+.hero-photo {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.7);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transition: all 1.5s ease;
+}
+
+.hero-photo-left {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.hero-photo-right {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.hero-photo-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-photo-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-welcome {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease 0.5s;
+}
+
+.hero-welcome.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-welcome-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    letter-spacing: 6px;
+    color: white;
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+}
+
+.hero-welcome-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+}
         .hero h1 {
             font-size: 5rem;
             font-weight: 300;
@@ -235,10 +321,16 @@
         }
 
         .timeline-icon {
-            display: block;
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 10px;
+}
+
+.timeline-icon svg {
+    width: 100%;
+    height: 100%;
+}
 
         .details-grid {
             display: flex;
@@ -316,17 +408,74 @@
         }
 
         /* Анимация появления */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+/* Приветственная секция */
+.welcome-section {
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.welcome-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    letter-spacing: 8px;
+    color: #b49b7f;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
 
+.welcome-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #888;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+}
+
+.welcome-photos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.welcome-photo {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.8s ease;
+}
+
+.welcome-photo-left {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.welcome-photo-right {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+.welcome-photo-left.visible,
+.welcome-photo-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Анимация появления */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+       
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -365,14 +514,22 @@
 <body>
 
     <header class="hero">
-        <div class="hero-content">
+    <div class="hero-content">
+        <div class="hero-main">
+            <img src="https://allwebs.ru/images/2026/05/19/920d2fff5819ef96a8d3ada53ad0eb64.jpg" alt="Фото 1" class="hero-photo hero-photo-left">
             <h1>Юрий<br>&<br>Изабелла</h1>
-            <span class="arrow-down">↓</span>
+            <img src="https://allwebs.ru/images/2026/05/19/920d2fff5819ef96a8d3ada53ad0eb64.jpg" alt="Фото 2" class="hero-photo hero-photo-right">
         </div>
-    </header>
+        <div class="hero-welcome reveal">
+            <h2 class="hero-welcome-title">ДОРОГИЕ ГОСТИ!</h2>
+            <p class="hero-welcome-subtitle">совсем скоро наступит очень важный и особенный для нас день</p>
+        </div>
+        <span class="arrow-down">↓</span>
+    </div>
+</header>
 
     <main>
-
+20:50 19.05.2026
         <!-- Календарь -->
         <section class="section" style="padding-top: 0;">
             <div class="calendar-wrapper">
@@ -393,27 +550,89 @@
         <section class="section">
             <h2 class="section-title">Программа дня</h2>
             <ul class="timeline">
-                <li class="reveal">
-                    <span class="timeline-icon">🥂</span>
-                    <span class="time">15:00</span>
-                    <p class="event">Сбор гостей</p>
-                </li>
-                <li class="reveal">
-                    <span class="timeline-icon">💍</span>
-                    <span class="time">16:00</span>
-                    <p class="event">Выездная регистрация</p>
-                </li>
-                <li class="reveal">
-                    <span class="timeline-icon">📸</span>
-                    <span class="time">17:00</span>
-                    <p class="event">Фотосессия</p>
-                </li>
-                <li class="reveal">
-                    <span class="timeline-icon">🍽️</span>
-                    <span class="time">18:00</span>
-                    <p class="event">Праздничный ужин и вечеринка</p>
-                </li>
-            </ul>
+    <!-- Сбор гостей — два бокала -->
+    <li class="reveal">
+        <span class="timeline-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Левый бокал -->
+                <path d="M6 8 L6 12 Q6 20 10 20 L14 20 Q18 20 18 12 L18 8"/>
+                <line x1="12" y1="20" x2="12" y2="28"/>
+                <line x1="8" y1="28" x2="16" y2="28"/>
+                <!-- Правый бокал -->
+                <path d="M22 8 L22 12 Q22 20 26 20 L30 20 Q34 20 34 12 L34 8"/>
+                <line x1="28" y1="20" x2="28" y2="28"/>
+                <line x1="24" y1="28" x2="32" y2="28"/>
+                <!-- Пузырьки -->
+                <circle cx="11" cy="14" r="1.2" fill="#b49b7f" stroke="none"/>
+                <circle cx="13" cy="11" r="0.8" fill="#b49b7f" stroke="none"/>
+                <circle cx="27" cy="13" r="1.2" fill="#b49b7f" stroke="none"/>
+                <circle cx="29" cy="16" r="0.8" fill="#b49b7f" stroke="none"/>
+            </svg>
+        </span>
+        <span class="time">15:00</span>
+        <p class="event">Сбор гостей</p>
+    </li>
+
+    <!-- Выездная регистрация — кольца -->
+<li class="reveal">
+    <span class="timeline-icon">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Левое нижнее кольцо -->
+            <circle cx="13" cy="22" r="6"/>
+            <!-- Правое верхнее кольцо -->
+            <circle cx="25" cy="18" r="6"/>
+            <!-- Бриллиант — крупный, чёткий -->
+            <polygon points="25,9 22,12 23,15 25,16 27,15 28,12" fill="#b49b7f" stroke="none"/>
+            <!-- Блик на бриллианте -->
+            <polygon points="25,9 24,12 25,13 26,12" fill="white" stroke="none" opacity="0.4"/>
+        </svg>
+    </span>
+    <span class="time">16:00</span>
+    <p class="event">Выездная регистрация</p>
+</li>
+
+    <!-- Фотосессия — фотоаппарат -->
+    <li class="reveal">
+        <span class="timeline-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Корпус -->
+                <rect x="6" y="14" width="28" height="16" rx="3"/>
+                <!-- Объектив -->
+                <circle cx="20" cy="22" r="5"/>
+                <circle cx="20" cy="22" r="2" fill="#b49b7f" stroke="none"/>
+                <!-- Вспышка -->
+                <rect x="12" y="8" width="16" height="6" rx="2"/>
+                <circle cx="16" cy="11" r="0.8" fill="#b49b7f" stroke="none"/>
+                <!-- Кнопка -->
+                <rect x="28" y="12" width="4" height="2" rx="1"/>
+            </svg>
+        </span>
+        <span class="time">17:00</span>
+        <p class="event">Фотосессия</p>
+    </li>
+
+<!-- Праздничный ужин — тарелка с приборами -->
+<li class="reveal">
+    <span class="timeline-icon">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Тарелка -->
+            <circle cx="20" cy="20" r="11"/>
+            <circle cx="20" cy="20" r="8" stroke-width="0.8"/>
+            <!-- Вилка слева -->
+            <line x1="7" y1="8" x2="7" y2="30"/>
+            <path d="M5 8 L7 8 L7 13"/>
+            <path d="M9 8 L7 8"/>
+            <line x1="6" y1="8" x2="6" y2="12"/>
+            <line x1="8" y1="8" x2="8" y2="12"/>
+            <!-- Нож справа -->
+            <line x1="33" y1="10" x2="33" y2="30"/>
+            <path d="M33 10 Q31 8 31 11 L31 14 Q31 16 33 15"/>
+        </svg>
+    </span>
+    <span class="time">18:00</span>
+    <p class="event">Праздничный ужин и вечеринка</p>
+</li>
+</ul>
         </section>
 
         <!-- Детали -->
@@ -439,7 +658,7 @@
             </div>
             <div class="detail-card">
                 <h3>Пожелания</h3>
-                <p>Ваше присутствие — лучший подарок!<br>Если хотите нас порадовать, будем благодарны за вклад в наш медовый месяц.</p>
+                <p>Ваше присутствие — лучший подарок!<br>Чтобы не утруждать вас поиском подарков.<br> Мы будем рады принять ваши <br>поздравления в конвертах<br><br> Приятным комплиментом для нас вместо цветов <br> будет бутылочка вашего любимого вина .</p>
             </div>
         </section>
 
@@ -529,7 +748,7 @@
         }
 
         // ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ =====
-        const revealElements = document.querySelectorAll('.reveal');
+        const revealElements = document.querySelectorAll('.reveal, .hero-photo-left, .hero-photo-right, .hero-welcome');
 
         function checkReveal() {
             const windowHeight = window.innerHeight;
