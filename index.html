@@ -26,7 +26,6 @@
             color: #3a3a3a;
         }
 
-        /* Секции */
         .section {
             padding: 70px 20px;
             max-width: 750px;
@@ -34,9 +33,8 @@
             text-align: center;
         }
 
-        /* Главный экран */
         .hero {
-            background: url('https://i.ibb.co/yFRMhb5Z/222.jpg') no-repeat center center/cover;
+            background: url('') no-repeat center center/cover; //вставить ссылку на картинку
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -91,7 +89,6 @@
             60% { transform: translateY(-10px); }
         }
 
-        /* Таймер */
         .timer-container {
             display: flex;
             justify-content: center;
@@ -119,7 +116,6 @@
             color: #888;
         }
 
-        /* Заголовки секций */
         .section-title {
             font-size: 2.8rem;
             margin-bottom: 1.5rem;
@@ -132,7 +128,87 @@
             margin: 0 auto 2.5rem;
         }
 
-        /* Программа */
+        /* Календарь */
+        .calendar-wrapper {
+            margin: 50px auto 0;
+            max-width: 400px;
+            background: transparent;
+        }
+
+        .calendar-header {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            letter-spacing: 6px;
+            color: #b49b7f;
+            margin-bottom: 20px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            padding: 0 10px;
+        }
+
+        .calendar-day-name {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            padding-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            color: #888;
+            position: relative;
+        }
+
+        /* Сердечко — только контур, без заливки */
+        .calendar-day.heart-day {
+            position: relative;
+            color: #b49b7f;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .calendar-day.heart-day svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 115%;
+            height: 115%;
+            z-index: 0;
+            animation: pulse-heart 2s infinite;
+        }
+
+        .calendar-day.heart-day svg path {
+            fill: none;
+            stroke: #c97a7a;
+            stroke-width: 1.5;
+        }
+
+        .calendar-day.heart-day span {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        .calendar-day.empty {
+            pointer-events: none;
+        }
+
         .timeline {
             list-style: none;
             margin-top: 2rem;
@@ -155,8 +231,12 @@
             font-size: 1.3rem;
             color: #333;
         }
+.timeline-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
 
-        /* Детали */
         .details-grid {
             display: flex;
             flex-wrap: wrap;
@@ -166,13 +246,14 @@
         }
 
         .detail-card {
-            flex: 1;
-            min-width: 220px;
-            background: white;
-            padding: 30px 20px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
+    flex: 1;
+    min-width: 220px;
+    background: transparent;
+    padding: 30px 20px;
+    border-radius: 0;
+    box-shadow: none;
+}
+        
 
         .detail-card h3 {
             font-size: 1.5rem;
@@ -180,7 +261,6 @@
             color: #b49b7f;
         }
 
-        /* Кнопка RSVP */
         .rsvp-button {
             display: inline-block;
             background: #b49b7f;
@@ -201,8 +281,48 @@
             background: #a3896c;
         }
 
-        /* Футер */
-        footer {
+.map-button {
+    display: inline-block;
+    margin-top: 12px;
+    color: #b49b7f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed #b49b7f;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.map-button:hover {
+    color: #a3896c;
+    border-bottom-color: #a3896c;
+}
+.color-circles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.color-circle {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #ddd;
+}
+/* Анимация появления */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}        
+footer {
             text-align: center;
             padding: 40px 20px;
             font-size: 0.9rem;
@@ -210,7 +330,6 @@
             border-top: 1px solid #eee;
         }
 
-        /* Адаптация для мобильных */
         @media (max-width: 600px) {
             .hero h1 {
                 font-size: 3.2rem;
@@ -224,12 +343,22 @@
             .timer-number {
                 font-size: 2.5rem;
             }
+            .calendar-header {
+                font-size: 1.8rem;
+                letter-spacing: 4px;
+            }
+            .calendar-grid {
+                gap: 4px;
+                padding: 0 5px;
+            }
+            .calendar-day {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Главный экран -->
     <header class="hero">
         <div class="hero-content">
             <p class="date">13 сентября 2026</p>
@@ -240,61 +369,90 @@
     </header>
 
     <main>
-        <!-- 2. Наша история -->
+        <!-- Наша история -->
         <section class="section">
             <h2 class="section-title">Наша история</h2>
             <p class="subtitle">Иногда судьба сводит людей самым неожиданным образом. Наша история началась с одного случайного взгляда, который изменил всё.</p>
             <p>Мы встретились ТУТ МОЖНО НАПИСАТЬ ТЕКСТ ЛЮБОЙ (теплым майским вечером в уютной кофейне на Арбате. Изабелла влюбленно смотрела на Юрия, а он в ответ пригласил её на новый кофе. С тех пор мы не расстаемся и с радостью приглашаем вас разделить с нами самый важный день в нашей жизни.</p>
         </section>
 
-        <!-- 3. Программа дня -->
-        <section class="section" style="background: #fff;">
-            <h2 class="section-title">Программа дня</h2>
-            <ul class="timeline">
-                <li>
-                    <span class="time">15:00</span>
-                    <p class="event">Сбор гостей</p>
-                </li>
-                <li>
-                    <span class="time">16:00</span>
-                    <p class="event">Выездная регистрация</p>
-                </li>
-                <li>
-                    <span class="time">17:00</span>
-                    <p class="event">Фотосессия</p>
-                </li>
-                <li>
-                    <span class="time">18:00</span>
-                    <p class="event">Праздничный ужин и вечеринка</p>
-                </li>
-            </ul>
+        <!-- Календарь -->
+        <section class="section" style="padding-top: 0;">
+            <div class="calendar-wrapper">
+                <div class="calendar-header">СЕНТЯБРЬ</div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <div class="calendar-day-name">пн</div>
+                    <div class="calendar-day-name">вт</div>
+                    <div class="calendar-day-name">ср</div>
+                    <div class="calendar-day-name">чт</div>
+                    <div class="calendar-day-name">пт</div>
+                    <div class="calendar-day-name">сб</div>
+                    <div class="calendar-day-name">вс</div>
+                </div>
+            </div>
         </section>
 
-        <!-- 4. Детали -->
+        <!-- Программа дня -->
+        <section class="section"> 
+            <h2 class="section-title">Программа дня</h2>
+            <ul class="timeline">
+    <li class="reveal">
+        <span class="timeline-icon">🥂</span>
+        <span class="time">15:00</span>
+        <p class="event">Сбор гостей</p>
+    </li>
+    <li class="reveal">
+        <span class="timeline-icon">💍</span>
+        <span class="time">16:00</span>
+        <p class="event">Выездная регистрация</p>
+    </li>
+    <li class="reveal">
+        <span class="timeline-icon">📸</span>
+        <span class="time">17:00</span>
+        <p class="event">Фотосессия</p>
+    </li>
+    <li class="reveal">
+        <span class="timeline-icon">🍽️</span>
+        <span class="time">18:00</span>
+        <p class="event">Праздничный ужин и вечеринка</p>
+    </li>
+</ul>
+        </section>
+
+        <!-- Детали -->
         <section class="section">
             <h2 class="section-title">Детали</h2>
-            <div class="details-grid">
+            <div class="detail-card">
+    <h3>Место</h3>
+    <p>Ресторан "Старый город"<br>ул. Мачуги, д. 111<br>Краснодар</p>
+    <a href="https://yandex.ru/maps/?rtext=~45.014478,39.084811&rtt=auto&z=14" 
+       target="_blank" 
+       class="map-button">
+       Построить маршрут
+    </a>
+</div>
+                <div class="detail-card reveal">
+    <h3>👔 Дресс-код</h3>
+    <p>Элегантный вечерний стиль</p>
+    <p style="margin-top: 8px;">Цветовая гамма:</p>
+    <div class="color-circles">
+        <span class="color-circle" style="background: #f4c2c2;" title="нежно-розовый"></span>
+        <span class="color-circle" style="background: #d4af37;" title="золотой"></span>
+        <!-- Добавьте сюда свои цвета -->
+    </div>
+</div>
                 <div class="detail-card">
-                    <h3>📍 Место</h3>
-                    <p>Ресторан "Старый город"<br>ул. Мачуги, д. 111<br>Краснодар</p>
-                </div>
-                <div class="detail-card">
-                    <h3>👔 Дресс-код</h3>
-                    <p>Элегантный вечерний стиль<br>Цветовая гамма:<br>нежно-розовый, золотой</p>
-                </div>
-                <div class="detail-card">
-                    <h3>🎁 Пожелания</h3>
+                    <h3>Пожелания</h3>
                     <p>Ваше присутствие — лучший подарок!<br>Если хотите нас порадовать, будем благодарны за вклад в наш медовый месяц.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 5. Подтверждение (RSVP) -->
+        <!-- Подтверждение -->
         <section class="section" style="background: #f4f1ed;">
             <h2 class="section-title">Вы будете?</h2>
             <p>Пожалуйста, подтвердите ваше присутствие до <strong>15 августа 2026</strong></p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSewjb3HLnK2kyd6lcg4BccKfgPq3aWqSxuO7IPVw2rgdXo8Pg/viewform?usp=publish-editor" class="rsvp-button">Подтвердить участие</a>
-            <!-- Замените # на ссылку на Google Форму, WhatsApp или email -->
             <p style="margin-top: 25px; font-size: 0.9rem;">По любым вопросам: +7 922 443-09-79 (Юрий) или +7 916 255-92-26 (Изабелла)</p>
         </section>
     </main>
@@ -303,9 +461,8 @@
         <p>С любовью, Юрий и Изабелла ♥</p>
     </footer>
 
-    <!-- СКРИПТ ТАЙМЕРА ОБРАТНОГО ОТСЧЕТА -->
     <script>
-        // Установите дату вашей свадьбы здесь (год, месяц (0-11), день, час, минута)
+        // ===== ТАЙМЕР =====
         const weddingDate = new Date('2026-09-13T18:00:00').getTime();
 
         function updateTimer() {
@@ -322,8 +479,6 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Ищем элементы таймера — если их нет (например, в этом шаблоне они не добавлены в HTML), 
-            // просто ничего не делаем или можно добавить контейнер в раздел с историей.
             const timerContainer = document.querySelector('.timer-container');
             if (timerContainer) {
                 timerContainer.innerHTML = `
@@ -335,17 +490,65 @@
             }
         }
 
-        // Запускаем обновление каждую секунду
         setInterval(updateTimer, 1000);
-        updateTimer(); // Первый запуск сразу
+        updateTimer();
 
-        // Создадим контейнер для таймера прямо в разделе "Наша история", чтобы его было видно
         const storySection = document.querySelector('.section');
         if (storySection) {
             const timerDiv = document.createElement('div');
             timerDiv.className = 'timer-container';
             storySection.appendChild(timerDiv);
         }
+
+        // ===== КАЛЕНДАРЬ =====
+        function buildCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const firstDayOfWeek = 1; // 1 сентября 2026 — вторник
+            const totalDays = 30;
+
+            for (let i = 0; i < firstDayOfWeek; i++) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'calendar-day empty';
+                grid.appendChild(emptyDiv);
+            }
+
+            // SVG-сердечко (контур)
+            const heartSVG = `
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 28 C8 18 0 14 0 8 C0 3 4 0 8 0 C11 0 14 2 16 5 C18 2 21 0 24 0 C28 0 32 3 32 8 C32 14 24 18 16 28Z"/>
+                </svg>
+            `;
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'calendar-day';
+                
+                if (day === 13) {
+                    dayDiv.classList.add('heart-day');
+                    dayDiv.innerHTML = heartSVG + '<span>13</span>';
+                } else {
+                    dayDiv.textContent = day;
+                }
+                
+                grid.appendChild(dayDiv);
+            }
+        }
+        // ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ =====
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 80) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+        buildCalendar();
     </script>
 
 </body>
