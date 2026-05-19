@@ -430,19 +430,21 @@
         }
 
         .color-circle {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 0 1px #ddd;
-        }
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #ddd;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.6s ease;
+}
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+.color-circle.visible {
+    opacity: 1;
+    transform: scale(1);
+}
 
         .reveal.visible {
             opacity: 1;
@@ -619,13 +621,17 @@
                 <p>Мы будем благодарны, если <br>в своих нарядах вы поддержите<br>цветовую гамму нашего торжества</p>
                 <p style="margin-top: 8px;">Цветовая гамма:</p>
                 <div class="color-circles">
-                    <span class="color-circle" style="background: #f4c2c2;" title="нежно-розовый"></span>
-                    <span class="color-circle" style="background: #d4af37;" title="золотой"></span>
-                </div>
+    <span class="color-circle reveal-color" style="background: #f4c2c2;" title="нежно-розовый"></span>
+    <span class="color-circle reveal-color" style="background: #d4af37;" title="золотой"></span>
+    <span class="color-circle reveal-color" style="background: #e8d5c4;" title="бежевый"></span>
+    <span class="color-circle reveal-color" style="background: #f0e6d3;" title="шампань"></span>
+    <span class="color-circle reveal-color" style="background: #d4a5a5;" title="пыльная роза"></span>
+    <span class="color-circle reveal-color" style="background: #c9a96e;" title="медный"></span>
+</div>
             </div>
             <div class="detail-card">
                 <h3>Пожелания</h3>
-                <p>Ваше присутствие — лучший подарок!<br>Чтобы не утруждать вас поиском подарков.<br> Мы будем рады принять ваши <br>поздравления в конвертах<br><br> Приятным комплиментом для нас вместо цветов <br> будет бутылочка вашего любимого вина .</p>
+                <p>Ваше присутствие — лучший подарок!<br><br>Чтобы не утруждать вас поиском<br>подарков, мы будем рады принять ваши <br>поздравления в конвертах<br><br> Приятным комплиментом для нас<br>вместо цветов будет бутылочка<br>вашего любимого вина</p>
             </div>
         </section>
 
@@ -698,16 +704,24 @@
                 grid.appendChild(dayDiv);
             }
         }
-        const revealElements = document.querySelectorAll('.reveal, .hero-photo-left, .hero-photo-right, .hero-welcome, .arrow-down');
+        const revealElements = document.querySelectorAll('.reveal, .hero-photo-left, .hero-photo-right, .hero-welcome, .arrow-down, .reveal-color');
         function checkReveal() {
-            const windowHeight = window.innerHeight;
-            revealElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 80) {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach((el, index) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 80) {
+            // Для цветовых кружков — задержка 1.5s между каждым
+            if (el.classList.contains('reveal-color')) {
+                const colorIndex = Array.from(el.parentElement.children).indexOf(el);
+                setTimeout(() => {
                     el.classList.add('visible');
-                }
-            });
+                }, colorIndex * 750);
+            } else {
+                el.classList.add('visible');
+            }
         }
+    });
+}
         window.addEventListener('scroll', checkReveal);
         window.addEventListener('load', checkReveal);
         buildCalendar();
