@@ -34,7 +34,7 @@
         }
 
         .hero {
-            background: url('') no-repeat center center/cover; //вставить ссылку на картинку
+            background: url('') no-repeat center center/cover;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -170,7 +170,7 @@
             position: relative;
         }
 
-        /* Сердечко — только контур, без заливки */
+        /* Сердечко — идеально ровный контур */
         .calendar-day.heart-day {
             position: relative;
             color: #b49b7f;
@@ -191,8 +191,10 @@
 
         .calendar-day.heart-day svg path {
             fill: none;
-            stroke: #c97a7a;
-            stroke-width: 1.5;
+            stroke: #d63b3b;
+            stroke-width: 1.8;
+            stroke-linejoin: round;
+            stroke-linecap: round;
         }
 
         .calendar-day.heart-day span {
@@ -231,11 +233,12 @@
             font-size: 1.3rem;
             color: #333;
         }
-.timeline-icon {
-    display: block;
-    font-size: 2rem;
-    margin-bottom: 8px;
-}
+
+        .timeline-icon {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
 
         .details-grid {
             display: flex;
@@ -246,14 +249,13 @@
         }
 
         .detail-card {
-    flex: 1;
-    min-width: 220px;
-    background: transparent;
-    padding: 30px 20px;
-    border-radius: 0;
-    box-shadow: none;
-}
-        
+            flex: 1;
+            min-width: 220px;
+            background: transparent;
+            padding: 30px 20px;
+            border-radius: 0;
+            box-shadow: none;
+        }
 
         .detail-card h3 {
             font-size: 1.5rem;
@@ -281,48 +283,51 @@
             background: #a3896c;
         }
 
-.map-button {
-    display: inline-block;
-    margin-top: 12px;
-    color: #b49b7f;
-    text-decoration: none;
-    font-size: 0.9rem;
-    border-bottom: 1px dashed #b49b7f;
-    padding-bottom: 2px;
-    transition: all 0.3s ease;
-}
+        .map-button {
+            display: inline-block;
+            margin-top: 12px;
+            color: #b49b7f;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #b49b7f;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
 
-.map-button:hover {
-    color: #a3896c;
-    border-bottom-color: #a3896c;
-}
-.color-circles {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 10px;
-}
+        .map-button:hover {
+            color: #a3896c;
+            border-bottom-color: #a3896c;
+        }
 
-.color-circle {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px #ddd;
-}
-/* Анимация появления */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
+        .color-circles {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}        
-footer {
+        .color-circle {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px #ddd;
+        }
+
+        /* Анимация появления */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
             text-align: center;
             padding: 40px 20px;
             font-size: 0.9rem;
@@ -361,15 +366,13 @@ footer {
 
     <header class="hero">
         <div class="hero-content">
-            
             <h1>Юрий<br>&<br>Изабелла</h1>
-           
             <span class="arrow-down">↓</span>
         </div>
     </header>
 
     <main>
-       
+
         <!-- Календарь -->
         <section class="section" style="padding-top: 0;">
             <div class="calendar-wrapper">
@@ -387,58 +390,56 @@ footer {
         </section>
 
         <!-- Программа дня -->
-        <section class="section"> 
+        <section class="section">
             <h2 class="section-title">Программа дня</h2>
             <ul class="timeline">
-    <li class="reveal">
-        <span class="timeline-icon">🥂</span>
-        <span class="time">15:00</span>
-        <p class="event">Сбор гостей</p>
-    </li>
-    <li class="reveal">
-        <span class="timeline-icon">💍</span>
-        <span class="time">16:00</span>
-        <p class="event">Выездная регистрация</p>
-    </li>
-    <li class="reveal">
-        <span class="timeline-icon">📸</span>
-        <span class="time">17:00</span>
-        <p class="event">Фотосессия</p>
-    </li>
-    <li class="reveal">
-        <span class="timeline-icon">🍽️</span>
-        <span class="time">18:00</span>
-        <p class="event">Праздничный ужин и вечеринка</p>
-    </li>
-</ul>
+                <li class="reveal">
+                    <span class="timeline-icon">🥂</span>
+                    <span class="time">15:00</span>
+                    <p class="event">Сбор гостей</p>
+                </li>
+                <li class="reveal">
+                    <span class="timeline-icon">💍</span>
+                    <span class="time">16:00</span>
+                    <p class="event">Выездная регистрация</p>
+                </li>
+                <li class="reveal">
+                    <span class="timeline-icon">📸</span>
+                    <span class="time">17:00</span>
+                    <p class="event">Фотосессия</p>
+                </li>
+                <li class="reveal">
+                    <span class="timeline-icon">🍽️</span>
+                    <span class="time">18:00</span>
+                    <p class="event">Праздничный ужин и вечеринка</p>
+                </li>
+            </ul>
         </section>
 
         <!-- Детали -->
         <section class="section">
             <h2 class="section-title">Детали</h2>
             <div class="detail-card">
-    <h3>Место</h3>
-    <p>Ресторан "Старый город"<br>ул. Мачуги, д. 111<br>Краснодар</p>
-    <a href="https://yandex.ru/maps/?rtext=~45.014478,39.084811&rtt=auto&z=14" 
-       target="_blank" 
-       class="map-button">
-       Построить маршрут
-    </a>
-</div>
-                <div class="detail-card reveal">
-    <h3>👔 Дресс-код</h3>
-    <p>Элегантный вечерний стиль</p>
-    <p style="margin-top: 8px;">Цветовая гамма:</p>
-    <div class="color-circles">
-        <span class="color-circle" style="background: #f4c2c2;" title="нежно-розовый"></span>
-        <span class="color-circle" style="background: #d4af37;" title="золотой"></span>
-        <!-- Добавьте сюда свои цвета -->
-    </div>
-</div>
-                <div class="detail-card">
-                    <h3>Пожелания</h3>
-                    <p>Ваше присутствие — лучший подарок!<br>Если хотите нас порадовать, будем благодарны за вклад в наш медовый месяц.</p>
+                <h3>Место</h3>
+                <p>Ресторан "Старый город"<br>ул. Мачуги, д. 111<br>Краснодар</p>
+                <a href="https://yandex.ru/maps/?rtext=~45.014478,39.084811&rtt=auto&z=14"
+                   target="_blank"
+                   class="map-button">
+                   Построить маршрут
+                </a>
+            </div>
+            <div class="detail-card reveal">
+                <h3>👔 Дресс-код</h3>
+                <p>Элегантный вечерний стиль</p>
+                <p style="margin-top: 8px;">Цветовая гамма:</p>
+                <div class="color-circles">
+                    <span class="color-circle" style="background: #f4c2c2;" title="нежно-розовый"></span>
+                    <span class="color-circle" style="background: #d4af37;" title="золотой"></span>
                 </div>
+            </div>
+            <div class="detail-card">
+                <h3>Пожелания</h3>
+                <p>Ваше присутствие — лучший подарок!<br>Если хотите нас порадовать, будем благодарны за вклад в наш медовый месяц.</p>
             </div>
         </section>
 
@@ -497,7 +498,7 @@ footer {
         // ===== КАЛЕНДАРЬ =====
         function buildCalendar() {
             const grid = document.getElementById('calendarGrid');
-            const firstDayOfWeek = 1; // 1 сентября 2026 — вторник
+            const firstDayOfWeek = 1;
             const totalDays = 30;
 
             for (let i = 0; i < firstDayOfWeek; i++) {
@@ -506,27 +507,27 @@ footer {
                 grid.appendChild(emptyDiv);
             }
 
-            // SVG-сердечко (контур)
             const heartSVG = `
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 28 C8 18 0 14 0 8 C0 3 4 0 8 0 C11 0 14 2 16 5 C18 2 21 0 24 0 C28 0 32 3 32 8 C32 14 24 18 16 28Z"/>
+                    <path d="M16 28 C16 28 8 20 4 14 C0 8 2 2 8 2 C11 2 14 5 16 8 C18 5 21 2 24 2 C30 2 32 8 28 14 C24 20 16 28 16 28Z"/>
                 </svg>
             `;
 
             for (let day = 1; day <= totalDays; day++) {
                 const dayDiv = document.createElement('div');
                 dayDiv.className = 'calendar-day';
-                
+
                 if (day === 13) {
                     dayDiv.classList.add('heart-day');
                     dayDiv.innerHTML = heartSVG + '<span>13</span>';
                 } else {
                     dayDiv.textContent = day;
                 }
-                
+
                 grid.appendChild(dayDiv);
             }
         }
+
         // ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ =====
         const revealElements = document.querySelectorAll('.reveal');
 
