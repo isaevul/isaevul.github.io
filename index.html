@@ -90,7 +90,7 @@
             align-items: center;
             justify-content: center;
             flex: 1;
-            margin-top: -300px;
+            margin-top: -250px;
         }
 
         .hero-main {
@@ -106,7 +106,7 @@
             font-weight: 400;
             color: white;
             letter-spacing: 8px;
-            line-height: 0.8;
+            line-height: 1.2;
             position: relative;
             z-index: 2;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
@@ -507,6 +507,26 @@
             }
             .calendar-day {
                 font-size: 0.85rem;
+            }
+        }
+@media (max-width: 380px) {
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+                line-height: 1.1;
+            }
+            .hero-main {
+                gap: 30px;
+            }
+            .hero-welcome-title {
+                font-size: 1.1rem;
+                letter-spacing: 3px;
+            }
+            .hero-welcome-subtitle {
+                font-size: 0.7rem;
+            }
+            .hero-content {
+                padding: 10px 10px 40px;
             }
         }
     </style>
