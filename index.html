@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Свадьба Юрий & Изабелла</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: #4a4a4a;
+      background: #faf9f7;
+      line-height: 1.8;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background: #faf9f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 9 / 16;
+      background: url('https://allwebs.ru/images/2026/06/04/92e32aebc42aaef6163e12c8995f18c9.jpeg') no-repeat center bottom / cover;
+      position: relative;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.25) 45%,
+    rgba(0,0,0,0.35) 100%
+  );
+  z-index: 1;
+}
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 42px 22px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .hero-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.95rem;
+      line-height: 0.9;
+      font-weight: 400;
+      color: white;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.62);
+      margin-top: 0;
+    }
+
+    .hero-divider {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+      color: #e7d0a8;
+    }
+
+    .hero-divider::before,
+    .hero-divider::after {
+      content: '';
+      width: 82px;
+      height: 1px;
+      background: rgba(231,208,168,0.82);
+    }
+
+    .hero-heart {
+      font-size: 1rem;
+      color: #e7d0a8;
+    }
+
+    .hero-date {
+      margin-top: 8px;
+      font-family: 'Playfair Display', serif;
+      color: #e7d0a8;
+      font-size: 1.05rem;
+      letter-spacing: 2.4px;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.62);
+    }
+
+    .hero-bottom {
+      margin-top: 18px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s ease 0.45s, transform 0.9s ease 0.45s;
+    }
+
+    .hero-bottom.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.32rem;
+      letter-spacing: 4.5px;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 4px 14px rgba(0,0,0,0.65);
+      margin-bottom: 5px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.96);
+      letter-spacing: 1.1px;
+      line-height: 1.45;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.65);
+    }
+
+    .section {
+      padding: 35px 20px;
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #b49b7f;
+      letter-spacing: 4px;
+      font-style: italic;
+    }
+
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin: 30px 0 10px;
+    }
+
+    .timer-item {
+      min-width: 66px;
+    }
+
+    .timer-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.1rem;
+      font-weight: 600;
+      color: #b49b7f;
+      line-height: 1;
+    }
+
+    .timer-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+    }
+
+    .calendar-wrapper {
+      margin: 15px auto 0;
+      max-width: 400px;
+    }
+
+    .calendar-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: 8px;
+      color: #b49b7f;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      padding: 0 10px;
+    }
+
+    .calendar-day-name {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #999;
+      padding-bottom: 8px;
+    }
+
+    .calendar-day {
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #888;
+      position: relative;
+    }
+
+    .calendar-day.heart-day {
+      color: #b49b7f;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .calendar-day.heart-day svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 115%;
+      height: 115%;
+      z-index: 0;
+      animation: pulse-heart 2s infinite;
+    }
+
+    .calendar-day.heart-day svg path {
+      fill: none;
+      stroke: #d63b3b;
+      stroke-width: 1.8;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+
+    .calendar-day.heart-day span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes pulse-heart {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+
+    .timeline {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .timeline li {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .timeline .time {
+      font-size: 1.2rem;
+      color: #b49b7f;
+      letter-spacing: 2px;
+    }
+
+    .timeline .event {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #333;
+      font-style: italic;
+    }
+
+    .timeline-icon {
+      display: block;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 10px;
+    }
+
+    .timeline-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .detail-card {
+      padding: 30px 20px;
+    }
+
+    .detail-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #b49b7f;
+      font-style: italic;
+    }
+
+    .map-button {
+      display: inline-block;
+      margin-top: 12px;
+      color: #b49b7f;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px dashed #b49b7f;
+      padding-bottom: 2px;
+    }
+
+    .color-circles {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .color-circle {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px #ddd;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.6s ease;
+    }
+
+    .color-circle.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .rsvp-section {
+      background: #f4f1ed;
+      max-width: none;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      background: #b49b7f;
+      color: white;
+      text-decoration: none;
+      padding: 14px 40px;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+      border-top: 1px solid #eee;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 430px) {
+      .hero {
+        align-items: center;
+      }
+
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .hero-content {
+        padding: 38px 18px 0;
+      }
+
+      .hero-names {
+        font-size: 3.72rem;
+      }
+
+      .hero-divider {
+        margin-top: 12px;
+      }
+
+      .hero-divider::before,
+      .hero-divider::after {
+        width: 68px;
+      }
+
+      .hero-date {
+        font-size: 0.95rem;
+      }
+
+      .hero-bottom {
+        margin-top: 15px;
+      }
+
+      .hero-title {
+        font-size: 1.15rem;
+        letter-spacing: 4px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.7rem;
+      }
+
+      .calendar-header {
+        font-size: 2rem;
+        letter-spacing: 5px;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .timer-number {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-content {
+        padding-top: 34px;
+      }
+
+      .hero-names {
+        font-size: 3.35rem;
+      }
+
+      .hero-title {
+        font-size: 1.05rem;
+        letter-spacing: 3.5px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.66rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="hero-card">
+      <div class="hero-content">
+        <div>
+          <div class="hero-names">Юрий<br>&<br>Изабелла</div>
+
+          <div class="hero-divider">
+            <span class="hero-heart">♥</span>
+          </div>
+
+          <div class="hero-date">13 сентября 2026</div>
+
+          <div class="hero-bottom">
+            <div class="hero-title">ДОРОГИЕ ГОСТИ!</div>
+            <div class="hero-subtitle">
+              Совсем скоро наступит очень важный<br>
+              и особенный для нас день...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: 0;">
+      <div class="calendar-wrapper">
+        <div class="calendar-header">СЕНТЯБРЬ</div>
+        <div class="calendar-grid" id="calendarGrid">
+          <div class="calendar-day-name">пн</div>
+          <div class="calendar-day-name">вт</div>
+          <div class="calendar-day-name">ср</div>
+          <div class="calendar-day-name">чт</div>
+          <div class="calendar-day-name">пт</div>
+          <div class="calendar-day-name">сб</div>
+          <div class="calendar-day-name">вс</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Программа дня</h2>
+
+      <ul class="timeline">
+        <li class="reveal">
+          <span class="timeline-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 8 L6 12 Q6 20 10 20 L14 20 Q18 20 18 12 L18 8"/>
+              <line x1="12" y1="20" x2="12" y2="28"/>
+              <line x1="8" y1="28" x2="16" y2="28"/>
+              <path d="M22 8 L22 12 Q22 20 26 20 L30 20 Q34 20 34 12 L34 8"/>
+              <line x1="28" y1="20" x2="28" y2="28"/>
+              <line x1="24" y1="28" x2="32" y2="28"/>
+              <circle cx="11" cy="14" r="1.2" fill="#b49b7f" stroke="none"/>
+              <circle cx="13" cy="11" r="0.8" fill="#b49b7f" stroke="none"/>
+              <circle cx="27" cy="13" r="1.2" fill="#b49b7f" stroke="none"/>
+              <circle cx="29" cy="16" r="0.8" fill="#b49b7f" stroke="none"/>
+            </svg>
+          </span>
+          <span class="time">16:40</span>
+          <p class="event">Сбор гостей</p>
+        </li>
+
+        <li class="reveal">
+          <span class="timeline-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13" cy="22" r="6"/>
+              <circle cx="25" cy="18" r="6"/>
+              <polygon points="25,6 22,8 23,11 25,12 27,11 28,8" fill="#b49b7f" stroke="none"/>
+              <polygon points="25,9 24,12 25,13 26,12" fill="white" stroke="none" opacity="0.4"/>
+            </svg>
+          </span>
+          <span class="time">17:00</span>
+          <p class="event">Выездная регистрация</p>
+        </li>
+
+        <li class="reveal">
+          <span class="timeline-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#b49b7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="20" cy="20" r="11"/>
+              <circle cx="20" cy="20" r="8" stroke-width="0.8"/>
+              <line x1="7" y1="8" x2="7" y2="30"/>
+              <path d="M5 8 L7 8 L7 13"/>
+              <path d="M9 8 L7 8"/>
+              <line x1="6" y1="8" x2="6" y2="12"/>
+              <line x1="8" y1="8" x2="8" y2="12"/>
+              <line x1="33" y1="10" x2="33" y2="30"/>
+              <path d="M33 10 Q31 8 31 11 L31 14 Q31 16 33 15"/>
+            </svg>
+          </span>
+          <span class="time">18:00</span>
+          <p class="event">Праздничный ужин</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="detail-card reveal">
+        <h3>Место</h3>
+        <p>Ресторан "Старый город"<br>ул. Мачуги, д. 111<br>Краснодар</p>
+        <a href="https://yandex.ru/maps/?rtext=~45.014478,39.084811&rtt=auto&z=14" target="_blank" class="map-button">Построить маршрут</a>
+      </div>
+
+      <div class="detail-card reveal">
+        <h3>Дресс-код</h3>
+        <p>Мы будем очень признательны,<br>если вы поддержите<br>цветовую гамму нашего торжества</p>
+
+        <p style="margin-top: 8px;">Для женщин:</p>
+
+        <div class="color-circles">
+          <span class="color-circle reveal-color" style="background: #967969;" title="Мокко"></span>
+          <span class="color-circle reveal-color" style="background: #C4A484;" title="Светло-коричневый"></span>
+          <span class="color-circle reveal-color" style="background: #e8d5c4;" title="Бежевый"></span>
+          <span class="color-circle reveal-color" style="background: #EADDCA;" title="Миндаль"></span>
+        </div>
+
+        <br>
+        <p>Для мужчин:<br>костюмы темных тонов, смокинги</p>
+      </div>
+
+      <div class="detail-card reveal">
+        <h3>Пожелания</h3>
+        <p>
+          Ваше присутствие — лучший подарок!<br><br>
+          Чтобы не утруждать вас поиском подарков,<br>
+          мы будем рады принять ваши поздравления в конвертах.<br><br>
+          Приятным комплиментом для нас вместо цветов<br>
+          будет бутылочка вашего любимого алкогольного напитка.
+        </p>
+      </div>
+    </section>
+
+    <section class="section rsvp-section">
+      <h2 class="section-title">Вы будете?</h2>
+      <p>Пожалуйста, подтвердите ваше присутствие до <strong>15 августа 2026</strong></p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSewjb3HLnK2kyd6lcg4BccKfgPq3aWqSxuO7IPVw2rgdXo8Pg/viewform?usp=publish-editor" class="rsvp-button">
+        Подтвердить участие
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>С любовью, Юрий и Изабелла ♥</p>
+  </footer>
+
+  <script>
+    const weddingDate = new Date('2026-09-13T18:00:00').getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const timerContainer = document.querySelector('.timer-container');
+      if (!timerContainer) return;
+
+      if (distance < 0) {
+        timerContainer.innerHTML = '<p style="font-size: 2rem; color: #b49b7f;">Мы уже женаты! 🎉</p>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      timerContainer.innerHTML = `
+        <div class="timer-item"><span class="timer-number">${days}</span><br><span class="timer-label">дней</span></div>
+        <div class="timer-item"><span class="timer-number">${hours}</span><br><span class="timer-label">часов</span></div>
+        <div class="timer-item"><span class="timer-number">${minutes}</span><br><span class="timer-label">минут</span></div>
+        <div class="timer-item"><span class="timer-number">${seconds}</span><br><span class="timer-label">секунд</span></div>
+      `;
+    }
+
+    const firstSection = document.querySelector('.section');
+    if (firstSection) {
+      const timerDiv = document.createElement('div');
+      timerDiv.className = 'timer-container';
+      firstSection.appendChild(timerDiv);
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    function buildCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      const firstDayOfWeek = 1;
+      const totalDays = 30;
+
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = 'calendar-day empty';
+        grid.appendChild(emptyDiv);
+      }
+
+      const heartSVG = `
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 28 C16 28 8 20 4 14 C0 8 2 2 8 2 C11 2 14 5 16 8 C18 5 21 2 24 2 C30 2 32 8 28 14 C24 20 16 28 16 28Z"/>
+        </svg>
+      `;
+
+      for (let day = 1; day <= totalDays; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'calendar-day';
+
+        if (day === 13) {
+          dayDiv.classList.add('heart-day');
+          dayDiv.innerHTML = heartSVG + '<span>13</span>';
+        } else {
+          dayDiv.textContent = day;
+        }
+
+        grid.appendChild(dayDiv);
+      }
+    }
+
+    const revealElements = document.querySelectorAll('.reveal, .reveal-color, .hero-bottom');
+
+    function checkReveal() {
+      const windowHeight = window.innerHeight;
+
+      revealElements.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 80) {
+          if (el.classList.contains('reveal-color')) {
+            const colorIndex = Array.from(el.parentElement.children).indexOf(el);
+            setTimeout(() => {
+              el.classList.add('visible');
+            }, colorIndex * 750);
+          } else {
+            el.classList.add('visible');
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkReveal);
+    window.addEventListener('load', checkReveal);
+
+    buildCalendar();
+  </script>
+
+</body>
+</html>
